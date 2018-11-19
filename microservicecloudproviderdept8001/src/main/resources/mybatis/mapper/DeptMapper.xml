@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.hua.springcloud.dao.DeptDao">
+    <select id="findById" resultType="com.hua.springcloud.entites.Dept" parameterType="Long">
+        select deptno,dname,db_source FROM dept WHERE deptno=#{deptno};
+    </select>
+
+    <select id="findAll" resultType="com.hua.springcloud.entites.Dept">
+        SELECT deptno,dname,db_source FROM dept;
+    </select>
+
+    <insert id="addDept" parameterType="com.hua.springcloud.entites.Dept">
+        INSERT INTo dept(dname,db_source) VALUES (#{dname},DATABASE());
+    </insert>
+</mapper>
